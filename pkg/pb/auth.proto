@@ -1,0 +1,28 @@
+syntax = "proto3";
+package pb;
+import "google/api/annotations.proto";
+
+message AuthRequest {
+  enum Entity {
+    SYSTEM = 0;
+    EMPLOYEE = 1;
+  }
+
+  Entity entity = 1;
+  string login = 2;
+  string password = 3;
+  string key = 4;
+}
+
+message AuthResponse {
+  string token = 1;
+}
+
+message ValidateRequest {
+  string token = 1;
+}
+
+service AuthService {
+  rpc Authenticate (AuthRequest) returns (AuthResponse) {}
+  rpc Validate (ValidateRequest) returns (AuthResponse) {}
+}

@@ -1,0 +1,1 @@
+{ "_id": {"$oid":"5d3783ee28ae9468bc528906"}, "email": "admin@page.com", "password": "$2a$04$FLsS84tlhkObb/m.ECwYdOXMkcq6lp1Yjrr5tptQTSf8xN3i2Y5wa", "name": "John Doe", "roles": [{"_id":{"$oid":"5d377ff93c9e1413c8c29e4b"},"name":"admin"}], "created_at":{"$date":{"$numberLong":"1562874404000"}},"updated_at":{"$date":{"$numberLong":"1562874404000"}}}

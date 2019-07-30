@@ -1,0 +1,50 @@
+syntax = "proto3";
+package pb;
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+import "role.proto";
+
+message Employee {
+  string id = 1;
+  string email = 2;  
+  string name = 3;
+  string password = 4;
+  string phone = 5;
+
+  repeated Role roles = 6;
+
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message EmployeeFilter {
+  string id = 1;
+  string email = 2;
+}
+
+service EmployeeService {
+  rpc GetEmployee(EmployeeFilter) returns (Employee) {}
+  rpc NewEmployee(NewEmployeeRequest) returns (Employee) {}
+  rpc UpdateEmployee(UpdateEmployeeRequest) returns (Employee) {}
+  rpc DeleteEmployee(EmployeeFilter) returns (google.protobuf.Empty) {}
+}
+
+message NewEmployeeRequest {
+  string email = 1;
+  string name = 2;
+  string password = 3;
+  string phone = 4;
+  repeated Role roles = 5;
+}
+
+message UpdateEmployeeRequest {
+  string id = 1;
+  string email = 2;
+  string name = 3;
+  string password = 4;
+  string phone = 5;
+  repeated Role roles = 6;
+}

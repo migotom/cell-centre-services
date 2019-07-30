@@ -1,0 +1,10 @@
+# service listen address
+listen_address = "127.0.0.1:6000"
+
+# database connection URI
+database_address = "mongodb://cell-centre:cell-centre@mongodb:27017/admin"
+database_name = "cell-centre"
+
+# NATS connection
+nats_cluster_id = "cell-centre-nats"
+nats_url = "nats://nats:4222"

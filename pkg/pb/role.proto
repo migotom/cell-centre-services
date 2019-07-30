@@ -1,0 +1,19 @@
+syntax = "proto3";
+package pb;
+
+import "google/api/annotations.proto";
+
+
+message Role {
+  string id = 1;
+  string name = 2;
+}
+
+message RoleFilter {
+  string id = 1;
+  string name = 2;
+}
+
+service RoleService {
+  rpc GetRole(RoleFilter) returns (Role) {}
+}

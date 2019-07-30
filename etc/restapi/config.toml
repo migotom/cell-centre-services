@@ -1,0 +1,6 @@
+# service listen address
+listen_address = ":3000"
+
+# endpoints configuration
+endpoint_event_store_url = "localhost:6000"
+endpoint_authenticator_url = "localhost:6001"

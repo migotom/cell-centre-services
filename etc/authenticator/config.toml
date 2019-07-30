@@ -1,0 +1,6 @@
+# service listen address
+listen_address = "127.0.0.1:6001"
+
+# database connection URI
+database_address = "mongodb://cell-centre:cell-centre@mongodb:27017/admin"
+database_name = "cell-centre"

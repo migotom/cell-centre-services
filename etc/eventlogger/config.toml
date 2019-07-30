@@ -1,0 +1,11 @@
+# NATS connection
+nats_cluster_id = "cell-centre-nats"
+nats_url = "nats://nats:4222"
+nats_client_id = "1"
+
+# database connection URI
+database_address = "mongodb://cell-centre:cell-centre@mongodb:27017/admin"
+database_name = "cell-centre"
+
+# event bus queues to log
+subscribes = [ "employees" ]

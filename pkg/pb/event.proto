@@ -1,0 +1,27 @@
+syntax = "proto3";
+package pb;
+
+import "google/protobuf/timestamp.proto";
+import "employee.proto";
+
+message Event {
+  string event_id = 1;
+  string channel = 2;
+  string type = 3;
+  string aggregate_id = 4;
+  string aggregate_type = 5;
+  oneof data {
+    Employee employee = 6;
+    UpdateEmployeeRequest update_request = 7;
+    EmployeeFilter employee_filter = 8;
+  }
+
+  message Claims {
+    string entity_id = 1;
+    string entity = 2;
+    string login = 3;
+  }
+  Claims originator = 9;
+  
+  google.protobuf.Timestamp created_at = 10;
+}

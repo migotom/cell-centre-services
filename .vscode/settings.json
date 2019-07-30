@@ -1,0 +1,6 @@
+{
+  "go.formatTool": "goimports",
+  "files.associations": {
+    "**/fixtures/**/*.json": "plaintext"
+  }
+}

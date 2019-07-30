@@ -1,0 +1,15 @@
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    - selector: pb.EmployeeService.GetEmployee
+      get: /v1/employee/{id}
+    - selector: pb.EmployeeService.NewEmployee
+      post: /v1/employee
+      body: "*"
+    - selector: pb.EmployeeService.UpdateEmployee
+      patch: /v1/employee/{id}
+      body: "*"
+    - selector: pb.EmployeeService.DeleteEmployee
+      delete: /v1/employee/{id}

@@ -1,0 +1,46 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: cell-centre
+      MONGO_INITDB_ROOT_USERNAME: cell-centre
+      MONGO_INITDB_ROOT_PASSWORD: cell-centre
+      MONGO_DATA_DIR: /data/db
+    command: mongod --smallfiles
+    volumes:
+      - ./db/fixtures/:/fixtures
+      - ./db/initdb.d/:/docker-entrypoint-initdb.d
+      - mongodb:/data
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_AUTH_DATABASE: admin
+      ME_CONFIG_MONGODB_ADMINUSERNAME: cell-centre
+      ME_CONFIG_MONGODB_ADMINPASSWORD: cell-centre
+  nats:
+    image: nats-streaming:latest
+    ports:
+      - 8222:8222
+      - 4222:4222
+    command: -p 4222 -m 8222 --cluster_id cell-centre-nats
+  cellcentre:
+    build: .
+    depends_on:
+      - mongodb
+      - nats
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/go/src/github.com/migotom/cell-centre-backend
+      - ./etc:/etc/cell-centre
+    command: 'sh -c "trap : TERM INT & tail -f /dev/null & wait"'
+volumes:
+  mongodb: ~

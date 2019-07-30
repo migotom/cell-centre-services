@@ -1,0 +1,10 @@
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    - selector: pb.AuthService.Authenticate
+      post: /v1/token/authenticate
+      body: "*"
+    - selector: pb.AuthService.Validate
+      get: /v1/token/validate
