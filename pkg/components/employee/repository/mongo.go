@@ -55,7 +55,7 @@ func (repository *employeeRepository) Get(ctx context.Context, filter *pb.Employ
 	case filter.GetEmail() != "":
 		return repository.fetchOne(ctx, bson.D{{"email", filter.GetEmail()}})
 	}
-	return nil, errors.New("Unknown employee filter")
+	return nil, errors.New("unknown employee filter")
 }
 
 func (repository *employeeRepository) Update(ctx context.Context, request *entities.Employee) (*entities.Employee, error) {
@@ -83,7 +83,7 @@ func (repository *employeeRepository) Delete(ctx context.Context, filter *pb.Emp
 	case filter.GetEmail() != "":
 		return repository.deleteOne(ctx, bson.D{{"email", filter.GetEmail()}})
 	}
-	return errors.New("Unknown employee filter")
+	return errors.New("unknown employee filter")
 }
 
 func (repository *employeeRepository) fetchOne(ctx context.Context, filter bson.D) (*entities.Employee, error) {

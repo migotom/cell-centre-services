@@ -5,8 +5,8 @@ import (
 
 	"github.com/grpc-ecosystem/go-grpc-middleware/util/metautils"
 	"go.uber.org/zap"
-	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"github.com/migotom/cell-centre-services/pkg/components/auth"
 	"github.com/migotom/cell-centre-services/pkg/components/employee"
@@ -38,7 +38,7 @@ func NewAuthenticateDelivery(log *zap.Logger, repository employee.Repository) *A
 func (delivery *AuthenticateDelivery) DefaultInterceptor(ctx context.Context) (context.Context, error) {
 	claims, err := ObtainClaimsFromMetadata(ctx)
 	if err != nil {
-		return nil, grpc.Errorf(codes.Unauthenticated, "Request unauthenticated with error: %v", err)
+		return nil, status.Errorf(codes.Unauthenticated, "Request unauthenticated with error: %v", err)
 	}
 
 	return context.WithValue(ctx, ContextKeyClaims, claims), nil
@@ -47,7 +47,7 @@ func (delivery *AuthenticateDelivery) DefaultInterceptor(ctx context.Context) (c
 // Authenticate gRPC handler that checks credentials and generates AuthResponse with token and claims.
 func (delivery *AuthenticateDelivery) Authenticate(ctx context.Context, request *pb.AuthRequest) (*pb.AuthResponse, error) {
 	if request == nil {
-		return &pb.AuthResponse{}, grpc.Errorf(codes.Unauthenticated, "Can't authenticate: %v", auth.AuthError{Reason: auth.ErrInvalidParameters})
+		return &pb.AuthResponse{}, status.Errorf(codes.Unauthenticated, "Can't authenticate: %v", auth.AuthError{Reason: auth.ErrInvalidParameters})
 	}
 	delivery.log.Info("Authenticate request", zap.String("request by", request.GetLogin()))
 
@@ -57,17 +57,17 @@ func (delivery *AuthenticateDelivery) Authenticate(ctx context.Context, request 
 	case pb.AuthRequest_EMPLOYEE:
 		employee, err := delivery.repository.Get(context.Background(), &pb.EmployeeFilter{Email: request.GetLogin()})
 		if err != nil || !auth.ValidPassword(employee.Password, request.GetPassword()) {
-			return &pb.AuthResponse{}, grpc.Errorf(codes.Unauthenticated, "Can't authenticate: %v", auth.AuthError{Reason: auth.ErrInvalidCredentials})
+			return &pb.AuthResponse{}, status.Errorf(codes.Unauthenticated, "Can't authenticate: %v", auth.AuthError{Reason: auth.ErrInvalidCredentials})
 		}
 		TokenClaimer = employee
 
 	default:
-		return &pb.AuthResponse{}, grpc.Errorf(codes.Unauthenticated, "Can't authenticate: %v", auth.AuthError{Reason: auth.ErrInvalidParameters})
+		return &pb.AuthResponse{}, status.Errorf(codes.Unauthenticated, "Can't authenticate: %v", auth.AuthError{Reason: auth.ErrInvalidParameters})
 	}
 
 	token, err := auth.NewToken(TokenClaimer)
 	if err != nil {
-		return &pb.AuthResponse{}, grpc.Errorf(codes.Unauthenticated, "Can't authenticate: %v", auth.AuthError{Reason: auth.ErrDecryptionToken, Err: err})
+		return &pb.AuthResponse{}, status.Errorf(codes.Unauthenticated, "Can't authenticate: %v", auth.AuthError{Reason: auth.ErrDecryptionToken, Err: err})
 	}
 	return &pb.AuthResponse{Token: token}, nil
 }

@@ -8,6 +8,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"go.uber.org/zap"
 
 	"google.golang.org/grpc/metadata"
 
@@ -55,10 +56,13 @@ func TestDefaultInterceptor(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.Name, func(t *testing.T) {
+			log, _ := zap.NewProduction()
+			defer log.Sync()
+
 			token := tc.TokenFunc()
 			md := metadata.New(map[string]string{headerAuthorize: token})
 			ctx := metadata.NewIncomingContext(context.Background(), md)
-			delivery := NewAuthenticateDelivery(nil)
+			delivery := NewAuthenticateDelivery(log, nil)
 
 			newCtx, err := delivery.DefaultInterceptor(ctx)
 			helpers.AssertErrors(t, err, tc.ExpectedErr)
@@ -114,10 +118,13 @@ func TestAuthenticate(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.Name, func(t *testing.T) {
+			log, _ := zap.NewProduction()
+			defer log.Sync()
+
 			employeeRepositoryMock := mocks.EmployeRepositoryMock{}
 			tc.ExpectedMockCalls(&employeeRepositoryMock)
 
-			delivery := NewAuthenticateDelivery(&employeeRepositoryMock)
+			delivery := NewAuthenticateDelivery(log, &employeeRepositoryMock)
 			res, err := delivery.Authenticate(context.Background(), &tc.AuthRequest)
 			helpers.AssertErrors(t, err, tc.ExpectedErr)
 			if err != nil {

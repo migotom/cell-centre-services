@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/golang/protobuf/ptypes"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	roleRepository "github.com/migotom/cell-centre-services/pkg/components/role"
@@ -122,13 +121,6 @@ func (factory *EmployeeEntityFactory) newEntityFromBase(e baseEmployeeInterface)
 		}
 	}
 	return &employee, nil
-}
-
-type employeeInterface interface {
-	GetId() string
-	GetCreatedAt() *timestamp.Timestamp
-	GetUpdatedAt() *timestamp.Timestamp
-	baseEmployeeInterface
 }
 
 type baseEmployeeInterface interface {

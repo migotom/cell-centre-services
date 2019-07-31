@@ -46,5 +46,5 @@ func (repository *roleRepo) Get(ctx context.Context, filter *pb.RoleFilter) (*en
 	case filter.GetName() != "":
 		return repository.fetchOne(ctx, bson.D{{"name", filter.GetName()}})
 	}
-	return nil, errors.New("Unknown role filter")
+	return nil, errors.New("unknown role filter")
 }

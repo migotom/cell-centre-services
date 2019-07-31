@@ -20,12 +20,10 @@ import (
 
 // EventStore defines gRPC handler for REST API and NATS events propagator.
 type EventStore struct {
-	log                *zap.Logger
-	config             *Config
-	authDelivery       *authDelivery.AuthenticateDelivery
-	employeeDelivery   *employeeDelivery.EmployeeDelivery
-	employeeRepository employee.Repository
-	roleRepository     role.Repository
+	log              *zap.Logger
+	config           *Config
+	authDelivery     *authDelivery.AuthenticateDelivery
+	employeeDelivery *employeeDelivery.EmployeeDelivery
 }
 
 // NewEventStore returns new event store service.
