@@ -64,7 +64,7 @@ func (delivery *EmployeeDelivery) AuthFuncOverride(ctx context.Context, fullMeth
 func (delivery *EmployeeDelivery) GetEmployee(ctx context.Context, filter *pb.EmployeeFilter) (*pb.Employee, error) {
 	employee, err := delivery.repository.Get(context.Background(), filter)
 	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "Request unauthenticated with error: %v", err)
+		return nil, status.Errorf(codes.NotFound, "Can't get employee: %v", err)
 	}
 
 	return delivery.employeePbFactory.NewFromEmployee(employee)
