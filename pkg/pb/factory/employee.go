@@ -3,8 +3,8 @@ package factory
 import (
 	"github.com/golang/protobuf/ptypes"
 
-	"github.com/migotom/cell-centre-backend/pkg/entities"
-	"github.com/migotom/cell-centre-backend/pkg/pb"
+	"github.com/migotom/cell-centre-services/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 // EmployeePbFactory is pb.Employee factory.

@@ -6,7 +6,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/migotom/cell-centre-backend/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/entities"
 )
 
 var (

@@ -8,7 +8,7 @@ import (
 	stan "github.com/nats-io/go-nats-streaming"
 	"github.com/nats-io/nuid"
 
-	"github.com/migotom/cell-centre-backend/pkg/pb"
+	"github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 func NewEventsStreaming() *EventsStreaming {

@@ -13,7 +13,7 @@ import (
 	"go.uber.org/zap/zapcore"
 	"google.golang.org/grpc"
 
-	gw "github.com/migotom/cell-centre-backend/pkg/pb"
+	gw "github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 // RESTAPI defines REST API gateway service.

@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/mock"
 
-	"github.com/migotom/cell-centre-backend/pkg/entities"
-	"github.com/migotom/cell-centre-backend/pkg/pb"
+	"github.com/migotom/cell-centre-services/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 type EmployeRepositoryMock struct {

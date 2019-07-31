@@ -8,7 +8,7 @@ import (
 	"github.com/heetch/confita/backend/file"
 	"go.uber.org/zap"
 
-	"github.com/migotom/cell-centre-backend/pkg/services/restapi"
+	"github.com/migotom/cell-centre-services/pkg/services/restapi"
 )
 
 func main() {

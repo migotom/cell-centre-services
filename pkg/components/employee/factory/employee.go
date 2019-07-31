@@ -7,9 +7,9 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	roleRepository "github.com/migotom/cell-centre-backend/pkg/components/role"
-	"github.com/migotom/cell-centre-backend/pkg/entities"
-	"github.com/migotom/cell-centre-backend/pkg/pb"
+	roleRepository "github.com/migotom/cell-centre-services/pkg/components/role"
+	"github.com/migotom/cell-centre-services/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 // EmployeeEntityFactory is entities.Employee factory.

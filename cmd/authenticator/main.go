@@ -8,10 +8,10 @@ import (
 	"github.com/heetch/confita/backend/file"
 	"go.uber.org/zap"
 
-	"github.com/migotom/cell-centre-backend/db"
-	authDelivery "github.com/migotom/cell-centre-backend/pkg/components/auth/delivery/grpc"
-	employeeRepository "github.com/migotom/cell-centre-backend/pkg/components/employee/repository"
-	"github.com/migotom/cell-centre-backend/pkg/services/authenticator"
+	"github.com/migotom/cell-centre-services/db"
+	authDelivery "github.com/migotom/cell-centre-services/pkg/components/auth/delivery/grpc"
+	employeeRepository "github.com/migotom/cell-centre-services/pkg/components/employee/repository"
+	"github.com/migotom/cell-centre-services/pkg/services/authenticator"
 )
 
 func main() {

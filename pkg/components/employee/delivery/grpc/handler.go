@@ -8,17 +8,17 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 
-	"github.com/migotom/cell-centre-backend/pkg/components/auth"
-	authDelivery "github.com/migotom/cell-centre-backend/pkg/components/auth/delivery/grpc"
-	"github.com/migotom/cell-centre-backend/pkg/components/employee"
-	employeeFactory "github.com/migotom/cell-centre-backend/pkg/components/employee/factory"
-	"github.com/migotom/cell-centre-backend/pkg/components/event"
+	"github.com/migotom/cell-centre-services/pkg/components/auth"
+	authDelivery "github.com/migotom/cell-centre-services/pkg/components/auth/delivery/grpc"
+	"github.com/migotom/cell-centre-services/pkg/components/employee"
+	employeeFactory "github.com/migotom/cell-centre-services/pkg/components/employee/factory"
+	"github.com/migotom/cell-centre-services/pkg/components/event"
 
-	"github.com/migotom/cell-centre-backend/pkg/components/role"
-	"github.com/migotom/cell-centre-backend/pkg/entities"
-	"github.com/migotom/cell-centre-backend/pkg/helpers"
-	"github.com/migotom/cell-centre-backend/pkg/pb"
-	pbFactory "github.com/migotom/cell-centre-backend/pkg/pb/factory"
+	"github.com/migotom/cell-centre-services/pkg/components/role"
+	"github.com/migotom/cell-centre-services/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/helpers"
+	"github.com/migotom/cell-centre-services/pkg/pb"
+	pbFactory "github.com/migotom/cell-centre-services/pkg/pb/factory"
 )
 
 // TODO move into configuration

@@ -39,7 +39,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/go/src/github.com/migotom/cell-centre-backend
+      - .:/go/src/github.com/migotom/cell-centre-services
       - ./etc:/etc/cell-centre
     command: 'sh -c "trap : TERM INT & tail -f /dev/null & wait"'
 volumes:

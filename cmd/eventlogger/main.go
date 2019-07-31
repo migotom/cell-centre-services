@@ -12,10 +12,10 @@ import (
 	stan "github.com/nats-io/go-nats-streaming"
 	"go.uber.org/zap"
 
-	"github.com/migotom/cell-centre-backend/db"
-	"github.com/migotom/cell-centre-backend/pkg/components/event"
-	"github.com/migotom/cell-centre-backend/pkg/components/event/repository"
-	"github.com/migotom/cell-centre-backend/pkg/services/eventlogger"
+	"github.com/migotom/cell-centre-services/db"
+	"github.com/migotom/cell-centre-services/pkg/components/event"
+	"github.com/migotom/cell-centre-services/pkg/components/event/repository"
+	"github.com/migotom/cell-centre-services/pkg/services/eventlogger"
 )
 
 func main() {

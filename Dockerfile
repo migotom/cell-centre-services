@@ -14,7 +14,7 @@ RUN go get github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 # Build app
 ENV GO111MODULE on
 
-WORKDIR $GOPATH/src/github.com/migotom/cell-centre-backend
+WORKDIR $GOPATH/src/github.com/migotom/cell-centre-services
 
 COPY go.mod .
 COPY go.sum .

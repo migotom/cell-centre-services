@@ -4,9 +4,9 @@ import (
 	"github.com/golang/protobuf/ptypes"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	employeeFactory "github.com/migotom/cell-centre-backend/pkg/components/employee/factory"
-	"github.com/migotom/cell-centre-backend/pkg/entities"
-	"github.com/migotom/cell-centre-backend/pkg/pb"
+	employeeFactory "github.com/migotom/cell-centre-services/pkg/components/employee/factory"
+	"github.com/migotom/cell-centre-services/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 // EventEntityFactory is entities.Event factory.

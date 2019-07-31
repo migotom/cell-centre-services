@@ -11,11 +11,11 @@ import (
 
 	"google.golang.org/grpc/metadata"
 
-	"github.com/migotom/cell-centre-backend/pkg/components/auth"
-	"github.com/migotom/cell-centre-backend/pkg/entities"
-	"github.com/migotom/cell-centre-backend/pkg/helpers"
-	"github.com/migotom/cell-centre-backend/pkg/helpers/mocks"
-	"github.com/migotom/cell-centre-backend/pkg/pb"
+	"github.com/migotom/cell-centre-services/pkg/components/auth"
+	"github.com/migotom/cell-centre-services/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/helpers"
+	"github.com/migotom/cell-centre-services/pkg/helpers/mocks"
+	"github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 func TestDefaultInterceptor(t *testing.T) {

@@ -10,12 +10,12 @@ import (
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/testdata"
 
-	authDelivery "github.com/migotom/cell-centre-backend/pkg/components/auth/delivery/grpc"
-	"github.com/migotom/cell-centre-backend/pkg/components/employee"
-	employeeDelivery "github.com/migotom/cell-centre-backend/pkg/components/employee/delivery/grpc"
-	"github.com/migotom/cell-centre-backend/pkg/components/event"
-	"github.com/migotom/cell-centre-backend/pkg/components/role"
-	"github.com/migotom/cell-centre-backend/pkg/pb"
+	authDelivery "github.com/migotom/cell-centre-services/pkg/components/auth/delivery/grpc"
+	"github.com/migotom/cell-centre-services/pkg/components/employee"
+	employeeDelivery "github.com/migotom/cell-centre-services/pkg/components/employee/delivery/grpc"
+	"github.com/migotom/cell-centre-services/pkg/components/event"
+	"github.com/migotom/cell-centre-services/pkg/components/role"
+	"github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 // EventStore defines gRPC handler for REST API and NATS events propagator.

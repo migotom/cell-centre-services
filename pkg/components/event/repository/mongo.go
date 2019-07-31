@@ -5,8 +5,8 @@ import (
 
 	"go.mongodb.org/mongo-driver/mongo"
 
-	"github.com/migotom/cell-centre-backend/pkg/components/event"
-	"github.com/migotom/cell-centre-backend/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/components/event"
+	"github.com/migotom/cell-centre-services/pkg/entities"
 )
 
 type mongoEventRepo struct {

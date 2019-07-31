@@ -3,7 +3,7 @@ package event
 import (
 	"context"
 
-	"github.com/migotom/cell-centre-backend/pkg/entities"
+	"github.com/migotom/cell-centre-services/pkg/entities"
 )
 
 // Repository of events.

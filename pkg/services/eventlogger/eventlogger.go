@@ -8,9 +8,9 @@ import (
 	stan "github.com/nats-io/go-nats-streaming"
 	"go.uber.org/zap"
 
-	"github.com/migotom/cell-centre-backend/pkg/components/event"
-	eventFactory "github.com/migotom/cell-centre-backend/pkg/components/event/factory"
-	"github.com/migotom/cell-centre-backend/pkg/pb"
+	"github.com/migotom/cell-centre-services/pkg/components/event"
+	eventFactory "github.com/migotom/cell-centre-services/pkg/components/event/factory"
+	"github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 // EventLogger defines event logging NATS subscriber service.

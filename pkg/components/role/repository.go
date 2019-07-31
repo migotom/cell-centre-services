@@ -3,8 +3,8 @@ package role
 import (
 	"context"
 
-	"github.com/migotom/cell-centre-backend/pkg/entities"
-	pb "github.com/migotom/cell-centre-backend/pkg/pb"
+	"github.com/migotom/cell-centre-services/pkg/entities"
+	pb "github.com/migotom/cell-centre-services/pkg/pb"
 )
 
 type Repository interface {
