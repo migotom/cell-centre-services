@@ -65,7 +65,7 @@ func TestDefaultInterceptor(t *testing.T) {
 			delivery := NewAuthenticateDelivery(log, nil)
 
 			newCtx, err := delivery.DefaultInterceptor(ctx)
-			helpers.AssertErrors(t, err, tc.ExpectedErr)
+			helpers.AssertErrors(t, tc.ExpectedErr, err)
 
 			if newCtx != nil {
 				tc.ExpectedClaims(newCtx)
@@ -126,7 +126,7 @@ func TestAuthenticate(t *testing.T) {
 
 			delivery := NewAuthenticateDelivery(log, &employeeRepositoryMock)
 			res, err := delivery.Authenticate(context.Background(), &tc.AuthRequest)
-			helpers.AssertErrors(t, err, tc.ExpectedErr)
+			helpers.AssertErrors(t, tc.ExpectedErr, err)
 			if err != nil {
 				return
 			}
@@ -134,7 +134,7 @@ func TestAuthenticate(t *testing.T) {
 			employeeRepositoryMock.AssertExpectations(t)
 
 			claims, err := auth.ParseToken(res.Token)
-			helpers.AssertErrors(t, err, tc.ExpectedErr)
+			helpers.AssertErrors(t, tc.ExpectedErr, err)
 			if err != nil {
 				return
 			}

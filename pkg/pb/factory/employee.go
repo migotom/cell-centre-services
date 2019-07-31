@@ -26,20 +26,24 @@ func (factory *EmployeePbFactory) NewFromEmployee(e *entities.Employee) (*pb.Emp
 		Phone:    e.Phone,
 	}
 
-	createdAt, err := ptypes.TimestampProto(*e.CreatedAt)
-	if err != nil {
-		return nil, err
-	}
-	if createdAt != nil {
-		employee.CreatedAt = createdAt
+	if e.CreatedAt != nil {
+		createdAt, err := ptypes.TimestampProto(*e.CreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		if createdAt != nil {
+			employee.CreatedAt = createdAt
+		}
 	}
 
-	updatedAt, err := ptypes.TimestampProto(*e.UpdatedAt)
-	if err != nil {
-		return nil, err
-	}
-	if updatedAt != nil {
-		employee.UpdatedAt = updatedAt
+	if e.UpdatedAt != nil {
+		updatedAt, err := ptypes.TimestampProto(*e.UpdatedAt)
+		if err != nil {
+			return nil, err
+		}
+		if updatedAt != nil {
+			employee.UpdatedAt = updatedAt
+		}
 	}
 
 	for _, role := range e.Roles {

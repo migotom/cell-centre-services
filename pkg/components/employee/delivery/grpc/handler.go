@@ -98,6 +98,9 @@ func (delivery *EmployeeDelivery) NewEmployee(ctx context.Context, request *pb.N
 	}
 
 	go func() {
+		if delivery.eventsStreaming == nil {
+			return
+		}
 		event, _ := delivery.eventPbFactory.NewFromEmployeeMessage(
 			authDelivery.ObtainClaimsFromContext(ctx),
 			entities.NewEmployeeEvent,
@@ -133,6 +136,9 @@ func (delivery *EmployeeDelivery) UpdateEmployee(ctx context.Context, request *p
 	}
 
 	go func() {
+		if delivery.eventsStreaming == nil {
+			return
+		}
 		event, _ := delivery.eventPbFactory.NewFromUpdateEmployeeRequest(
 			authDelivery.ObtainClaimsFromContext(ctx),
 			entities.UpdateEmployeeEvent,
@@ -148,10 +154,13 @@ func (delivery *EmployeeDelivery) UpdateEmployee(ctx context.Context, request *p
 func (delivery *EmployeeDelivery) DeleteEmployee(ctx context.Context, filter *pb.EmployeeFilter) (*empty.Empty, error) {
 	err := delivery.repository.Delete(context.Background(), filter)
 	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "Can't delete employee: %v", EmployeeDeliveryError{Reason: ErrInvalidEmployeeData, Err: err})
+		return nil, status.Errorf(codes.NotFound, "Can't delete employee: %v", EmployeeDeliveryError{Reason: ErrInvalidEmployeeData, Err: err})
 	}
 
 	go func() {
+		if delivery.eventsStreaming == nil {
+			return
+		}
 		event, _ := delivery.eventPbFactory.NewFromEmployeeFilter(
 			authDelivery.ObtainClaimsFromContext(ctx),
 			entities.DeleteEmployeeEvent,

@@ -8,5 +8,5 @@ import (
 )
 
 type Repository interface {
-	Get(tx context.Context, filter *pb.RoleFilter) (*entities.Role, error)
+	Get(ctx context.Context, filter *pb.RoleFilter) (*entities.Role, error)
 }

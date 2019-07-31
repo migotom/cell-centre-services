@@ -109,7 +109,7 @@ func TestParseToken(t *testing.T) {
 		t.Run(tc.Name, func(t *testing.T) {
 			token := tc.AuthToken()
 			claims, err := ParseToken(token)
-			helpers.AssertErrors(t, err, tc.ExpectedErr)
+			helpers.AssertErrors(t, tc.ExpectedErr, err)
 			assert.Equal(t, tc.ExpectedClaims, claims)
 		})
 

@@ -7,7 +7,7 @@ import (
 )
 
 // AssertErrors checks and compares error with expected one.
-func AssertErrors(t *testing.T, err error, expected string) {
+func AssertErrors(t *testing.T, expected string, err error) {
 	if expected != "" {
 		assert.EqualError(t, err, expected)
 	} else {
